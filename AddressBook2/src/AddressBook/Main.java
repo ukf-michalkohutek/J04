@@ -14,7 +14,9 @@ public class Main  {
         String priezvisko;
         String email;
         boolean quit = true;
+        System.out.println("Vitajte:");
         while (quit) {
+            System.out.println("\na meno priezvisko email -> pridá novú osobu\nd uuid -> vymaže osobu s uuid\ne uuid meno priezvisko email -> upraví osobu s uuid\ns uuid -> vráti údaje o osobe s uuid\nl -> vráti údaje o všetkých osobách\nq -> koniec");
             switch (vstup.next().charAt(0)){
                 case 'a':
                     uuid = UUID.randomUUID();
