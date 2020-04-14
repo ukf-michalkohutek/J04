@@ -11,8 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static AddressBook.Commands.*;
 
@@ -20,26 +19,34 @@ public class TableViewController {
     @FXML private TableView<Student> tableView;
     @FXML private TextField CommandPane;
 
-    private ObservableList<Student> filteredList = FXCollections.observableArrayList();
-    private ObservableList<Student> oldData = FXCollections.observableArrayList();
+    private HashMap<Integer, Student> hashMap = new HashMap<>();
+
+    private int id = 1;
 
     @FXML
     private void initialize() {
-        this.oldData = this.tableView.getItems();
+        for(Student student : this.tableView.getItems()) {
+            // Bad solution but at least I used hashMap and work with it
+            // this.id is same as student.getId --> I could use student.getId as key
+            this.hashMap.put(this.id++, student);
+        }
+
         this.CommandPane.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
     }
 
     @FXML
     protected void execute(ActionEvent event) {
-        ObservableList<Student> data = tableView.getItems();
-
         Parser parser = new Parser(this.CommandPane.getText());
 
         //********ADD COMMAND****************
+        //***********************************
         if (parser.getActualCommand() == ADD) {
-            data.add(new Student(parser.getFirstName(), parser.getLastName(), parser.getEmail()));
+            Student student = new Student(parser.getFirstName(), parser.getLastName(), parser.getEmail());
+            this.hashMap.put(this.id++, student);
             this.CommandPane.setText("");
+            this.tableView.getItems().add(student);
         //******** SEARCH COMMAND ******************
+        //******************************************
         }else if (parser.getActualCommand() == SEARCH) {
             String toBeFound = parser.getTextToBeFound();
             this.CommandPane.setText("");
@@ -47,51 +54,75 @@ public class TableViewController {
             if (toBeFound.equals("")) return;
 
             Set<Student> newSet = new HashSet<>();
-            for(Student student : data) {
-                if (student.getFirstName().contains(parser.getTextToBeFound()) ||
-                        student.getLastName().contains(parser.getTextToBeFound()) ||
-                        student.getEmail().contains(parser.getTextToBeFound())) {
-                    newSet.add(student);
+            ObservableList<Student> filteredList = FXCollections.observableArrayList();
+            // Go through hashMap and check every student's attributes
+            for(Map.Entry<Integer, Student> entry : this.hashMap.entrySet()) {
+                if (entry.getValue().getFirstName().contains(parser.getTextToBeFound()) ||
+                        entry.getValue().getLastName().contains(parser.getTextToBeFound()) ||
+                        entry.getValue().getEmail().contains(parser.getTextToBeFound())) {
+                    newSet.add(entry.getValue());
                 }
             }
 
-            this.filteredList.clear();
-            this.filteredList.addAll(newSet);
-            this.tableView.setItems(this.filteredList);
+            filteredList.clear();
+            filteredList.addAll(newSet);
+            this.tableView.setItems(filteredList);
 
         //********** LIST COMMAND ********************
+        //********************************************
         }else if (parser.getActualCommand() == LIST) {
-            this.tableView.setItems(this.oldData);
+            ObservableList<Student> list = FXCollections.observableArrayList();
+
+            for (Map.Entry<Integer, Student> entry : this.hashMap.entrySet()) {
+                list.add(entry.getValue());
+            }
+            this.tableView.setItems(list);
             this.CommandPane.setText("");
         //************ DELETE COMMAND ****************
+        //********************************************
         }else if (parser.getActualCommand() == DELETE) {
+            // Delete selected Student
             Student student = this.tableView.getSelectionModel().getSelectedItem();
             if (student == null) return;
 
-            this.oldData.remove(student);
+            this.hashMap.remove(student.getId());
+
+            ObservableList<Student> list = FXCollections.observableArrayList();
+
+            for (Map.Entry<Integer, Student> entry : this.hashMap.entrySet()) {
+                list.add(entry.getValue());
+            }
+            
             this.tableView.getItems().remove(student);
 
-            this.tableView.setItems(this.oldData);
+            this.tableView.setItems(list);
 
             this.CommandPane.setText("");
         //************* QUIT COMMAND ********************
+        //***********************************************
         }else if (parser.getActualCommand() == QUIT) {
             Platform.exit();
         //************* EDIT COMMAND ********************
+        //***********************************************
         }else if (parser.getActualCommand() == EDIT) {
+            // Edit selected student
             Student student = this.tableView.getSelectionModel().getSelectedItem();
 
             if (student == null) return;
+
             if (!parser.getEmail().equals("")) {
                 student.setEmail(parser.getEmail());
+                this.hashMap.get(student.getId()).setEmail(parser.getEmail());
             }
 
             if (!parser.getFirstName().equals("")) {
                 student.setFirstName(parser.getFirstName());
+                this.hashMap.get(student.getId()).setFirstName(parser.getFirstName());
             }
 
             if (!parser.getLastName().equals("")) {
                 student.setLastName(parser.getLastName());
+                this.hashMap.get(student.getId()).setLastName(parser.getLastName());
             }
 
             this.tableView.refresh();

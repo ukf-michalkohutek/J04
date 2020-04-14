@@ -6,7 +6,8 @@ public class Student {
     private final SimpleStringProperty firstName = new SimpleStringProperty("");
     private final SimpleStringProperty lastName = new SimpleStringProperty("");
     private final SimpleStringProperty email = new SimpleStringProperty("");
-
+    private static int staticID = 1;
+    private int id;
     public Student() {
         this("", "", "");
     }
@@ -15,6 +16,12 @@ public class Student {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        this.id = Student.staticID++;
+
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getFirstName() {
