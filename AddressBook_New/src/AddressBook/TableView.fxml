@@ -1,0 +1,65 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import AddressBook.Student?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0"
+          fx:controller="AddressBook.TableViewController"
+          xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <Label text="Address Book" style="-fx-font: NORMAL 30 Verdana;" GridPane.rowIndex="0" GridPane.columnIndex="0">
+    </Label>
+
+    <TableView fx:id="tableView" GridPane.columnIndex="0"
+               GridPane.rowIndex="1">
+        <columns>
+            <TableColumn text="First Name" fx:id="firstNameColumn" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="firstName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Last Name" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="lastName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email Address" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="email" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Student firstName="Janko" lastName="Hrasko"
+                         email="janko.hrasko@student.ukf.sk"/>
+                <Student firstName="Stefan" lastName="Ruzicka"
+                        email="stefan.ruzicka@student.ukf.sk"/>
+                <Student firstName="Eugen" lastName="Vesely"
+                        email="eugen.vesely@student.ukf.sk"/>
+                <Student firstName="Ema" lastName="Kratka"
+                        email="ema.kratka@student.ukf.sk"/>
+                <Student firstName="Pavol" lastName="Dlhy"
+                        email="pavol.dlhy@student.ukf.sk"/>
+            </FXCollections>
+        </items>
+
+    </TableView>
+
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0"
+          GridPane.rowIndex="2">
+        <TextField fx:id="CommandPane" promptText="Write command" prefWidth="400"/>
+        <Button text="Execute" onAction="#execute"/>
+
+    </HBox>
+
+</GridPane>
