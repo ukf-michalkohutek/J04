@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b4cc805-8d6a-47cf-895b-e108abc9f4b9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1blYHyilGrudp6IXzROPGr3BM81" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="E:/Seminar/sqlite-jdbc-3.30.1.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="J04" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;E:\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b4cc805-8d6a-47cf-895b-e108abc9f4b9" name="Default Changelist" comment="" />
+      <created>1589208063239</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589208063239</updated>
+      <workItem from="1589208064987" duration="250000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="101" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589208146843">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="101" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1589208146843" />
+    <state x="376" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589208120904">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="376" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1589208120904" />
+    <state x="689" y="268" key="FileChooserDialogImpl" timestamp="1589208246284">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="689" y="268" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1589208246284" />
+    <state width="1234" height="279" key="GridCell.Tab.0.bottom" timestamp="1589208314965">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1234" height="279" key="GridCell.Tab.0.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1589208314965" />
+    <state width="1234" height="279" key="GridCell.Tab.0.center" timestamp="1589208314965">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1234" height="279" key="GridCell.Tab.0.center/0.0.2560.1040@0.0.2560.1040" timestamp="1589208314965" />
+    <state width="1234" height="279" key="GridCell.Tab.0.left" timestamp="1589208314965">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1234" height="279" key="GridCell.Tab.0.left/0.0.2560.1040@0.0.2560.1040" timestamp="1589208314965" />
+    <state width="1234" height="279" key="GridCell.Tab.0.right" timestamp="1589208314965">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1234" height="279" key="GridCell.Tab.0.right/0.0.2560.1040@0.0.2560.1040" timestamp="1589208314965" />
+    <state x="127" y="94" key="SettingsEditor" timestamp="1589208248551">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="127" y="94" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1589208248551" />
+  </component>
+</project>
