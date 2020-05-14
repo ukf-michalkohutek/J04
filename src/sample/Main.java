@@ -16,67 +16,51 @@ public class Main {
 
     public static void main(String[] args) {
         urob();
-        menu();
+
     }
 
-    private static void menu() {
-        String vstup= scan.nextLine();
-        while (!vstup.equalsIgnoreCase("K")) {
-            if (vstup.equalsIgnoreCase("A")) pridajStatMesto();
-            if (vstup.equalsIgnoreCase("H")) hladajStatMesto();
-            if (vstup.equalsIgnoreCase("U")) ukazStatMesto();
-            if (vstup.equalsIgnoreCase("P")) prerob();
-            if (vstup.equalsIgnoreCase("V")) vymaz();
-            if (vstup.equalsIgnoreCase("N")) navigacia();
-            vstup= scan.nextLine();
 
-        }
-    }
-    private static void pridajStatMesto() {
+    private static void vložMenoOsoby() {
         int b = -1;
         String line = null;
         while (b == -1 || b == 0) {
-            System.out.println(" Pridaj štát a  jeho hlavné mesto:");
+            System.out.println(" Pridaj meno a priezvisko osoby:");
             line = scan.nextLine();
             b = line.indexOf(" ");
         }
         if (line != null) {
             String stat = line.substring(0, b);
             String mesto = line.substring(b + 1);
-            a.pridajStatMesto(new statik(stat, mesto,ID++));
+            a.vložMenoOsoby(new statik(stat, mesto,ID++));
         } else {
             System.out.println("Neuložené");
         }
     }
 
-    private static void hladajStatMesto() {
+    private static void NajdiMeno() {
         System.out.println("Zadaj ID: ");
         int id = scan.nextInt();
         scan.nextLine();
-        statik s = a.NajdiStatMesto(id);
+        statik s = a.NajdiMeno(id);
         if (s == null) {
-            System.out.println("Štát a  jeho hlavné mesto nenájdené");
+            System.out.println("Zadané meno a priezvisko nenájdené");
         } else {
             System.out.println(s.toString());
         }
     }
 
-    private static void ukazStatMesto() {
-        for (statik s : a.getPersons().values()) {
-            System.out.println(s.toString());
-        }
-    }
 
-    private static void prerob() {
+
+    private static void rekonstruct() {
         System.out.println("Zadaj ID: ");
         int id = scan.nextInt();
         scan.nextLine();
-        statik s = a.NajdiStatMesto(id);
+        statik s = a.NajdiMeno(id);
         if (s == null) {
-            System.out.println("premenuj štát a jeho hlavné mesto nenájdené");
+            System.out.println("zadané Meno neexistuje");
         } else {
-            pridajStatMesto();
-            System.out.println("Upravené");
+            pridajMenoOsoby();
+            System.out.println("Zmenené");
         }
     }
 
@@ -84,36 +68,31 @@ public class Main {
         System.out.println("Zadaj ID: ");
         int id = scan.nextInt();
         scan.nextLine();
-        statik s = a.NajdiStatMesto(id);
+        statik s = a.NajdiMeno(id);
         if (s == null) {
-            System.out.println("Štát a jeho hlavné mesto nenájdené");
+            System.out.println("Meno a priezvisko nenájdené");
         } else {
-            a.vymazStatMesto(s.getId());
-            System.out.println("Štát a jeho hlavné mesto vymazané");
+            a.VymazMenoOsoby(s.getId());
+            System.out.println("Meno a priezvisko sú vymazané");
         }
     }
-
-    private static void navigacia() {
-        System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-        System.out.println("00  Pridaj = A      Hľadaj = H      Ukáž štáty a ich hlavné mestá = U      Prerob = P      Vymaž = V      Navigácia = N      Koniec = K  00");
-        System.out.println("000000000000000000000000000000000000000000000000000 Môžeš použiť aj mále pismená 000000000000000000000000000000000000000000000000000");
-
+    private static void naplnZoznam() {
+        a.vložMenoOsoby(new statik("Ibrahim"+", ","Majga", 1));
+        a.vložMenoOsoby(new statik("Vincent"+", ", "Klein", 2));
+        a.vložMenoOsoby(new statik("HOrác"+", ", "Horák", 3));
+        a.vložMenoOsoby(new statik("Servác"+", ", "Mokrý", 4));
+        a.vložMenoOsoby(new statik("Júlia"+", ", "Nováková", 5));
+        a.vložMenoOsoby(new statik("Martá"+", ", "Mladá", 6));
+        a.vložMenoOsoby(new statik("Martin"+", ", "Nový", 7));
+        idecko = 8;
     }
 
-    private static void naplnMapu() {
-        a.pridajStatMesto(new statik("Austrália"+", ","Canberra", 1));
-        a.pridajStatMesto(new statik("Slovensko"+", ", "Bratislava", 2));
-        a.pridajStatMesto(new statik("Rusko"+", ", "Moskva", 3));
-        a.pridajStatMesto(new statik("Irán"+", ", "Teherán", 4));
-        a.pridajStatMesto(new statik("Grécko"+", ", "Atény", 5));
-        ID = 6;
-    }
 
     private static void urob() {
-        a = new adresar();
+        a = new adresát();
         scan = new Scanner(System.in);
-        naplnMapu();
-        navigacia();
+        naplnZoznam();
+
     }
 
 }
